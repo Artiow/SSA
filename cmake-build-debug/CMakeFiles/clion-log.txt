@@ -1,0 +1,2 @@
+CMakeLists.txt not found in G:\Программирование\0. УЧЕБА\4К\Алгоритмы на строках\SSA
+Toolchains are not configured Configure
