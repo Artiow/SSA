@@ -3,4 +3,4 @@ project(SSA)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(SSA main.cpp)
+add_executable(Lab1 Lab1/main.cpp)
