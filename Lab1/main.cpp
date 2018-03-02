@@ -4,9 +4,15 @@
 
 #include <iostream>
 
+#include "modules/borderarray.h"
+
 using namespace std;
 
 int main() {
-    cout << "Yeah!\n";
+    string s = "abaababaabaababaababa";
+    vector a = aMaxBorder(s);
+
+    for (auto n: a) cout << n << ' ';
+
     return 0;
 }
