@@ -4,16 +4,23 @@
 
 #include <iostream>
 
-#include "modules/borderarray.h"
+#include "modules/bordersearch.h"
 
 using namespace std;
 
 int main() {
     string s = "abaababaabaababaababa";
-    vector a = aMaxBorder(s);
+    string p = "aba";
 
+    cout << "Sample:\n" << s << '\n';
+    cout << "Pattern:\n" << p << '\n';
 
+    cout << '\n';
+    vector result = borderSearch(s, p);
+    cout << "Num of occurrence: " << result.size() << '\n';
+    cout << "Positions:\n";
+    for (auto item: result) cout << item << ' ';
+    cout << '\n';
 
-    for (auto n: a) cout << n << ' ';
     return 0;
 }
