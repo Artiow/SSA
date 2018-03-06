@@ -12,7 +12,8 @@ int main() {
     string s = "abaababaabaababaababa";
     vector a = aMaxBorder(s);
 
-    for (auto n: a) cout << n << ' ';
 
+
+    for (auto n: a) cout << n << ' ';
     return 0;
 }
