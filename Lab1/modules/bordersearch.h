@@ -23,9 +23,8 @@ vector<int> borderSearch(const string &sample, const string &pattern) {
         int tmp = (array[i] - 1);
         while ((tmp > -1) && (result[i + 1] != result[tmp + 1])) tmp = (array[tmp] - 1);
         if (result[i + 1] == result[tmp + 1]) {
-            tmp += 2;
             i++;
-
+            tmp += 2;
             array[i] = tmp;
             if (tmp == pLength) occurrence.push_back(i - (pLength + pLength));
         } else {
