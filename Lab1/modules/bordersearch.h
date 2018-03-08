@@ -8,16 +8,14 @@
 #include <iostream>
 #include <vector>
 
+#include "glue.h"
+
 using namespace std;
 
 vector<int> borderSearch(const string &sample, const string &pattern) {
-    const char SIGN = '$';
     unsigned int pLength = pattern.length();
 
-    string result(pattern);
-    result.push_back(SIGN);
-    result.append(sample);
-
+    string result = glue(sample, pattern);
     unsigned int n = result.length();
     vector<int> occurrence;
     vector<int> array(n);
