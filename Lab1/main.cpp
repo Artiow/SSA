@@ -22,8 +22,8 @@ string readFile(const string& fileName) {
 }
 
 int main() {
-    string SAMPLE_FILE_NAME = "../samples/sample0.txt";
-    string PATTERN_FILE_NAME = "../samples/pattern0.txt";
+    string SAMPLE_FILE_NAME = "../samples/sample2.txt";
+    string PATTERN_FILE_NAME = "../samples/pattern2.txt";
 
     string sample = readFile(SAMPLE_FILE_NAME);
     string pattern = readFile(PATTERN_FILE_NAME);
