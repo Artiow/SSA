@@ -2,8 +2,13 @@
 // Created by Artiow on 06.03.2018.
 //
 
+#ifndef SSA_BLOCKSEARCH_H
+#define SSA_BLOCKSEARCH_H
+
 #include <iostream>
 #include <vector>
+
+#include "glue.h"
 
 using namespace std;
 
@@ -24,13 +29,9 @@ int cmp(const string &sample, int sub1, int sub2) {
 }
 
 vector<int> blockSearch(const string &sample, const string &pattern) {
-    const char SIGN = '$';
     unsigned int pLength = pattern.length();
 
-    string result(pattern);
-    result.push_back(SIGN);
-    result.append(sample);
-
+    string result = glue(sample, pattern);
     unsigned int n = result.length();
     vector<int> occurrence;
     vector<int> array(n);
@@ -68,3 +69,5 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
 
     return occurrence;
 }
+
+#endif //SSA_BLOCKSEARCH_H
