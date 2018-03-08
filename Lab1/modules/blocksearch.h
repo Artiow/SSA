@@ -44,14 +44,15 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
 
             if (value < residue) array[i] = value;
             else {
-                array[i] = residue;
-
                 left = i;
+
                 value = cmp(sample, residue, right + 1);
                 if (value > 0) {
-                    array[i] += value;
-                    right = (i + array[i] - 1);
+                    residue += value;
+                    right += value;
                 }
+
+                array[i] = residue;
             }
         }
     }
