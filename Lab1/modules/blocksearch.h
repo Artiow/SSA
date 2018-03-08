@@ -24,14 +24,21 @@ int cmp(const string &sample, int sub1, int sub2) {
 }
 
 vector<int> blockSearch(const string &sample, const string &pattern) {
-    unsigned int n = sample.length();
+    const char SIGN = '$';
+    unsigned int pLength = pattern.length();
+
+    string result(pattern);
+    result.push_back(SIGN);
+    result.append(sample);
+
+    unsigned int n = result.length();
     vector<int> occurrence;
     vector<int> array(n);
 
     int value, left = 0, right = 0;
     for (int i = 1; i < n; i++) {
         if (i > right) {
-            value = cmp(sample, 0, i);
+            value = cmp(result, 0, i);
             if (value > 0) {
                 array[i] = value;
 
@@ -46,7 +53,7 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
             else {
                 left = i;
 
-                value = cmp(sample, residue, right + 1);
+                value = cmp(result, residue, right + 1);
                 if (value > 0) {
                     residue += value;
                     right += value;
@@ -55,8 +62,9 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
                 array[i] = residue;
             }
         }
+
+        if (array[i] == pLength) occurrence.push_back(i - pLength - 1);
     }
 
-    occurrence = array;
     return occurrence;
 }
