@@ -7,25 +7,38 @@
 #include "modules/bordersearch.h"
 #include "modules/blocksearch.h"
 
+#include <fstream>
+#include <sstream>
+
 using namespace std;
 
-int main() {
-    string s = "abcabdabcabeabcabdabcabc";
-    string p = "abc";
+string readFile(const string& fileName) {
+    ifstream f(fileName);
+    stringstream ss;
+    ss << f.rdbuf();
 
-    cout << "Sample:\n" << s << '\n';
-    cout << "Pattern:\n" << p << '\n';
+    f.close();
+    return ss.str();
+}
+
+int main() {
+    string SAMPLE_FILE_NAME = "../samples/sample0.txt";
+    string PATTERN_FILE_NAME = "../samples/pattern0.txt";
+
+    string sample = readFile(SAMPLE_FILE_NAME);
+    string pattern = readFile(PATTERN_FILE_NAME);
+
     vector<int> result;
 
     cout << '\n';
-    result = borderSearch(s, p);
+    result = borderSearch(sample, pattern);
     cout << "Num of occurrence: " << result.size() << '\n';
     cout << "Positions:\n";
     for (auto item: result) cout << item << ' ';
     cout << '\n';
 
     cout << '\n';
-    result = blockSearch(s, p);
+    result = blockSearch(sample, pattern);
     cout << "Num of occurrence: " << result.size() << '\n';
     cout << "Positions:\n";
     for (auto item: result) cout << item << ' ';
