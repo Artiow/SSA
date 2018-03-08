@@ -2,6 +2,9 @@
 // Created by Artiow on 06.03.2018.
 //
 
+#ifndef SSA_BLOCKSEARCH_H
+#define SSA_BLOCKSEARCH_H
+
 #include <iostream>
 #include <vector>
 
@@ -68,3 +71,5 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
 
     return occurrence;
 }
+
+#endif //SSA_BLOCKSEARCH_H

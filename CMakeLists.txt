@@ -3,4 +3,4 @@ project(SSA)
 
 set(CMAKE_CXX_STANDARD 17)
 
-add_executable(Lab1 Lab1/main.cpp Lab1/modules/bordersearch.h Lab1/modules/blocksearch.h)
+add_executable(Lab1 Lab1/main.cpp Lab1/modules/glue.h Lab1/modules/bordersearch.h Lab1/modules/blocksearch.h)

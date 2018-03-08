@@ -2,6 +2,9 @@
 // Created by Artiow on 02.03.2018.
 //
 
+#ifndef SSA_BORDERSEARCH_H
+#define SSA_BORDERSEARCH_H
+
 #include <iostream>
 #include <vector>
 
@@ -35,3 +38,5 @@ vector<int> borderSearch(const string &sample, const string &pattern) {
 
     return occurrence;
 }
+
+#endif //SSA_BORDERSEARCH_H
