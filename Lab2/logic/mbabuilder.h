@@ -15,11 +15,16 @@ vector<int> buildMaxBorderArray(const string &s) {
     vector<int> array(n);
 
     for (int i = 0; i < (n - 1);) {
-        int tmp = array[i];
-        while ((tmp > 0) && (array[i + 1] != array[tmp])) tmp = (array[tmp + 1] - 1);
-
-        i++;
-        if (array[i] == array[tmp]) array[i] = ++tmp;
+        int tmp = (array[i] - 1);
+        while ((tmp > -1) && (s[i + 1] != s[tmp + 1])) tmp = (array[tmp] - 1);
+        if (s[i + 1] == s[tmp + 1]) {
+            i++;
+            tmp += 2;
+            array[i] = tmp;
+        } else {
+            i++;
+            array[i] = 0;
+        }
     }
 
     return array;
