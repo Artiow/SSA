@@ -14,8 +14,8 @@ set(DNA_GENERATOR libs/dnagenerator.h)
 add_library(libs ${FILE_READER} ${DNA_GENERATOR})
 
 #LAB 1
-add_executable(Lab1_DNA Lab1/dnasearch.cpp Lab1/modules/glue.h Lab1/modules/bordersearch.h Lab1/modules/blocksearch.h)
-add_executable(Lab1_FILE Lab1/filesearch.cpp Lab1/modules/glue.h Lab1/modules/bordersearch.h Lab1/modules/blocksearch.h)
+add_executable(Lab1_DNA Lab1/dnasearch.cpp Lab1/logic/glue.h Lab1/logic/bordersearch.h Lab1/logic/blocksearch.h)
+add_executable(Lab1_FILE Lab1/filesearch.cpp Lab1/logic/glue.h Lab1/logic/bordersearch.h Lab1/logic/blocksearch.h)
 
 #LAB 2
-add_executable(Lab2 Lab2/main.cpp)
+add_executable(Lab2 Lab2/main.cpp Lab2/logic/mbabuilder.h)

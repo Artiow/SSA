@@ -9,8 +9,8 @@
 
 #include "../libs/filereader.h"
 
-#include "modules/bordersearch.h"
-#include "modules/blocksearch.h"
+#include "logic/bordersearch.h"
+#include "logic/blocksearch.h"
 
 using namespace std;
 
