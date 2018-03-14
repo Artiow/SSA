@@ -18,4 +18,4 @@ add_executable(Lab1_DNA Lab1/dnasearch.cpp Lab1/logic/glue.h Lab1/logic/borderse
 add_executable(Lab1_FILE Lab1/filesearch.cpp Lab1/logic/glue.h Lab1/logic/bordersearch.h Lab1/logic/blocksearch.h)
 
 #LAB 2
-add_executable(Lab2 Lab2/main.cpp Lab2/logic/mbabuilder.h)
+add_executable(Lab2_FILE Lab2/filesearch.cpp Lab2/logic/mbabuilder.h Lab2/logic/kmpsearch.h)

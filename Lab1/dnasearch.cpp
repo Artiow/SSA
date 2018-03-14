@@ -3,12 +3,10 @@
 //
 
 #include <iostream>
-
-#include <ctime>
 #include <random>
+#include <ctime>
 
 #include "../libs/dnagenerator.h"
-
 #include "logic/bordersearch.h"
 #include "logic/blocksearch.h"
 

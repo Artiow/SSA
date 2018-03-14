@@ -6,8 +6,7 @@
 #include <ctime>
 
 #include "../libs/filereader.h"
-#include "logic/bordersearch.h"
-#include "logic/blocksearch.h"
+#include "logic/kmpsearch.h"
 
 using namespace std;
 
@@ -25,26 +24,11 @@ int main() {
     vector<int> result;
     int start_time, end_time;
 
-    cout << "\nBorder Search\n";
+    cout << "\nKMP Search\n";
     cout << "=======================\n";
 
     start_time = clock();
-    result = borderSearch(sample, pattern);
-    end_time = clock();
-
-    cout << "Operating time: " << end_time - start_time << "ms" << '\n';
-    cout << "Num of occurrence: " << result.size() << '\n';
-    if (!result.empty()) {
-        cout << "Positions:\n";
-        for (auto item: result) cout << item << ' ';
-        cout << '\n';
-    }
-
-    cout << "\nBlock Search\n";
-    cout << "=======================\n";
-
-    start_time = clock();
-    result = blockSearch(sample, pattern);
+    result = kmpSearch(sample, pattern);
     end_time = clock();
 
     cout << "Operating time: " << end_time - start_time << "ms" << '\n';
