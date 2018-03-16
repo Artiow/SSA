@@ -13,6 +13,7 @@ using namespace std;
 int main() {
     cout << "FILE SEARCH\n";
     cout << "=======================\n";
+    int start_time, end_time;
 
     string SAMPLE_FILE_NAME = "../samples/sample1.txt";
     string sample = read(SAMPLE_FILE_NAME);
@@ -21,14 +22,11 @@ int main() {
     string pattern;
     cin >> pattern;
 
-    vector<int> result;
-    int start_time, end_time;
-
     cout << "\nKMP Search\n";
     cout << "=======================\n";
 
     start_time = clock();
-    result = kmpSearch(sample, pattern);
+    vector<int> result = kmpSearch(sample, pattern);
     end_time = clock();
 
     cout << "Operating time: " << end_time - start_time << "ms" << '\n';

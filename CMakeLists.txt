@@ -6,16 +6,26 @@ set(CMAKE_CXX_STANDARD 17)
 #SAMPLES
 set(SAMPLE_1 samples/sample1.txt)
 set(SAMPLE_2 samples/sample2.txt)
-add_library(samples ${SAMPLE_1} ${SAMPLE_2})
+add_library(SAMPLES ${SAMPLE_1} ${SAMPLE_2})
 
-#LIBS
+#GLOBAL LIBS
 set(FILE_READER libs/filereader.h)
 set(DNA_GENERATOR libs/dnagenerator.h)
-add_library(libs ${FILE_READER} ${DNA_GENERATOR})
+add_library(GLOBAL_LIBS ${FILE_READER} ${DNA_GENERATOR})
 
-#LAB 1
-add_executable(Lab1_DNA Lab1/dnasearch.cpp Lab1/logic/glue.h Lab1/logic/bordersearch.h Lab1/logic/blocksearch.h)
-add_executable(Lab1_FILE Lab1/filesearch.cpp Lab1/logic/glue.h Lab1/logic/bordersearch.h Lab1/logic/blocksearch.h)
+#LAB 1 LIBS
+set(GLUE Lab1/logic/glue.h)
+set(BORDER_SEARCH Lab1/logic/bordersearch.h)
+set(BLOCK_SEARCH Lab1/logic/blocksearch.h)
+add_library(Lab1_LIBS ${GLUE} ${BORDER_SEARCH} ${BLOCK_SEARCH})
+#LAB 1 EXECUTABLE
+add_executable(Lab1_DNA Lab1/dnasearch.cpp)
+add_executable(Lab1_FILE Lab1/filesearch.cpp)
 
-#LAB 2
-add_executable(Lab2_FILE Lab2/filesearch.cpp Lab2/logic/mbabuilder.h Lab2/logic/kmpsearch.h)
+#LAB 2 LIBS
+set(MBA_BUILDER Lab2/logic/mbabuilder.h)
+set(KMP_SEARCH Lab2/logic/kmpsearch.h)
+add_library(Lab2_LIBS ${MBA_BUILDER} ${KMP_SEARCH})
+#LAB 2 EXECUTABLE
+add_executable(Lab2_DNA Lab2/dnasearch.cpp)
+add_executable(Lab2_FILE Lab2/filesearch.cpp)
