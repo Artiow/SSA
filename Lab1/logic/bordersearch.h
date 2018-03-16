@@ -14,6 +14,7 @@ using namespace std;
 
 vector<int> borderSearch(const string &sample, const string &pattern) {
     unsigned int pLength = pattern.length();
+    unsigned int pDoubleLength = (pLength + pLength);
 
     string result = glue(sample, pattern);
     unsigned int n = result.length();
@@ -29,7 +30,7 @@ vector<int> borderSearch(const string &sample, const string &pattern) {
         while ((tmp > 0) && (nextChar != result[tmp])) tmp = array[tmp - 1];
         if (nextChar == result[tmp]) {
             array[i] = ++tmp;
-            if (tmp == pLength) occurrence.push_back(i - (pLength + pLength));
+            if (tmp == pLength) occurrence.push_back(i - pDoubleLength);
         }
     }
 
