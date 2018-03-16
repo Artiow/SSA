@@ -21,16 +21,15 @@ vector<int> borderSearch(const string &sample, const string &pattern) {
     vector<int> array(n);
 
     for (int i = 0; i < (n - 1);) {
-        int tmp = (array[i] - 1);
-        while ((tmp > -1) && (result[i + 1] != result[tmp + 1])) tmp = (array[tmp] - 1);
-        if (result[i + 1] == result[tmp + 1]) {
-            i++;
-            tmp += 2;
-            array[i] = tmp;
+        int tmp = array[i];
+
+        i++;
+        char iResultChar = result[i];
+
+        while ((tmp > 0) && (iResultChar != result[tmp])) tmp = array[tmp - 1];
+        if (iResultChar == result[tmp]) {
+            array[i] = ++tmp;
             if (tmp == pLength) occurrence.push_back(i - (pLength + pLength));
-        } else {
-            i++;
-            array[i] = 0;
         }
     }
 
