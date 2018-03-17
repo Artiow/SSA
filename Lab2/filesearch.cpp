@@ -3,39 +3,29 @@
 //
 
 #include <iostream>
-#include <ctime>
 
 #include "../libs/filereader.h"
-#include "logic/kmpsearch.h"
+#include "test/test.h"
 
 using namespace std;
 
 int main() {
+    cout << "==============================================\n";
     cout << "FILE SEARCH\n";
-    cout << "=======================\n";
-    int start_time, end_time;
+    cout << "==============================================\n";
+    string SAMPLE_NAME = "sample1.txt";
 
-    string SAMPLE_FILE_NAME = "../samples/sample1.txt";
-    string sample = read(SAMPLE_FILE_NAME);
+    string SAMPLE_PATH = "../samples/";
+    string filename = SAMPLE_PATH + SAMPLE_NAME;
+    string sample = read(filename);
+    cout << "NAME: \t" << SAMPLE_NAME << '\n';
+    cout << "LENGTH: \t" << sample.length() << '\n';
 
-    cout << "Query: ";
+    cout << "\nQUERY: ";
     string pattern;
     cin >> pattern;
 
-    cout << "\nKMP Search\n";
-    cout << "=======================\n";
-
-    start_time = clock();
-    vector<int> result = kmpSearch(sample, pattern);
-    end_time = clock();
-
-    cout << "Operating time: " << end_time - start_time << "ms" << '\n';
-    cout << "Num of occurrence: " << result.size() << '\n';
-    if (!result.empty()) {
-        cout << "Positions:\n";
-        for (auto item: result) cout << item << ' ';
-        cout << '\n';
-    }
+    test(sample, pattern);
 
     return 0;
 }

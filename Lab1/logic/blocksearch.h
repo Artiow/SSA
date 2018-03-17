@@ -41,10 +41,9 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
         if (i > right) {
             value = cmp(result, 0, i);
             if (value > 0) {
-                array[i] = value;
-
                 left = i;
                 right = (left + value - 1);
+                array[i] = value;
             }
         } else {
             value = array[i - left];
@@ -53,13 +52,11 @@ vector<int> blockSearch(const string &sample, const string &pattern) {
             if (value < residue) array[i] = value;
             else {
                 left = i;
-
                 value = cmp(result, residue, right + 1);
                 if (value > 0) {
                     residue += value;
                     right += value;
                 }
-
                 array[i] = residue;
             }
         }

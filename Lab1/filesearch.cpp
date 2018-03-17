@@ -3,57 +3,29 @@
 //
 
 #include <iostream>
-#include <ctime>
 
 #include "../libs/filereader.h"
-#include "logic/bordersearch.h"
-#include "logic/blocksearch.h"
+#include "test/test.h"
 
 using namespace std;
 
 int main() {
+    cout << "==============================================\n";
     cout << "FILE SEARCH\n";
-    cout << "=======================\n";
+    cout << "==============================================\n";
+    string SAMPLE_NAME = "sample1.txt";
 
-    string SAMPLE_FILE_NAME = "../samples/sample1.txt";
-    string sample = read(SAMPLE_FILE_NAME);
+    string SAMPLE_PATH = "../samples/";
+    string filename = SAMPLE_PATH + SAMPLE_NAME;
+    string sample = read(filename);
+    cout << "NAME: \t" << SAMPLE_NAME << '\n';
+    cout << "LENGTH: \t" << sample.length() << '\n';
 
-    cout << "Query: ";
+    cout << "\nQUERY: ";
     string pattern;
     cin >> pattern;
 
-    vector<int> result;
-    int start_time, end_time;
-
-    cout << "\nBorder Search\n";
-    cout << "=======================\n";
-
-    start_time = clock();
-    result = borderSearch(sample, pattern);
-    end_time = clock();
-
-    cout << "Operating time: " << end_time - start_time << "ms" << '\n';
-    cout << "Num of occurrence: " << result.size() << '\n';
-    if (!result.empty()) {
-        cout << "Positions:\n";
-        for (auto item: result) cout << item << ' ';
-        cout << '\n';
-    }
-
-    cout << "\nBlock Search\n";
-    cout << "=======================\n";
-
-    start_time = clock();
-    result = blockSearch(sample, pattern);
-    end_time = clock();
-
-    cout << "Operating time: " << end_time - start_time << "ms" << '\n';
-    cout << "Num of occurrence: " << result.size() << '\n';
-    if (!result.empty()) {
-        cout << "Positions:\n";
-        for (auto item: result) cout << item << ' ';
-        cout << '\n';
-    }
+    test(sample, pattern);
 
     return 0;
 }
