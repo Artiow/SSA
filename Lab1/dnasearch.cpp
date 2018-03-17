@@ -7,67 +7,39 @@
 #include <ctime>
 
 #include "../libs/dnagenerator.h"
-#include "logic/bordersearch.h"
-#include "logic/blocksearch.h"
+#include "test/test.h"
 
 using namespace std;
 
 int main() {
+    cout << "==============================================\n";
     cout << "DNA SEARCH\n";
-    cout << "=======================\n";
+    cout << "==============================================\n";
 
-    cout << "Sample length: ";
-    unsigned long sampleLength;
-    cin >> sampleLength;
-    cout << "Pattern length: ";
-    unsigned long patternLength;
-    cin >> patternLength;
 
     cout << '\n';
+    cout << "SAMPLE LENGTH: ";
+    unsigned long sampleLength;
+    cin >> sampleLength;
+    cout << "PATTERN LENGTH: ";
+    unsigned long patternLength;
+    cin >> patternLength;
+    cout << '\n';
+
     random_device rd;
     int start_time, end_time;
 
     start_time = clock();
     string sample = generateDNA(sampleLength, rd());
     end_time = clock();
-    cout << "Sample generating time: " << end_time - start_time << "ms\n";
+    cout << "SAMPLE GENERATING TIME: \t" << end_time - start_time << "\n";
 
     start_time = clock();
     string pattern = generateDNA(patternLength, rd());
     end_time = clock();
-    cout << "Pattern generating time: " << end_time - start_time << "ms\n";
+    cout << "PATTERN GENERATING TIME: \t" << end_time - start_time << "\n";
 
-    vector<int> result;
-
-    cout << "\nBorder Search\n";
-    cout << "=======================\n";
-
-    start_time = clock();
-    result = borderSearch(sample, pattern);
-    end_time = clock();
-
-    cout << "Operating time: " << end_time - start_time << "ms" << '\n';
-    cout << "Num of occurrence: " << result.size() << '\n';
-    if (!result.empty()) {
-        cout << "Positions:\n";
-        for (auto item: result) cout << item << ' ';
-        cout << '\n';
-    }
-
-    cout << "\nBlock Search\n";
-    cout << "=======================\n";
-
-    start_time = clock();
-    result = blockSearch(sample, pattern);
-    end_time = clock();
-
-    cout << "Operating time: " << end_time - start_time << "ms" << '\n';
-    cout << "Num of occurrence: " << result.size() << '\n';
-    if (!result.empty()) {
-        cout << "Positions:\n";
-        for (auto item: result) cout << item << ' ';
-        cout << '\n';
-    }
+    test(sample, pattern);
 
     return 0;
 }

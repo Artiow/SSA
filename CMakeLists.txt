@@ -10,17 +10,21 @@ add_library(SAMPLES ${SAMPLE_1} ${SAMPLE_2})
 
 #GLOBAL LIBS
 set(FILE_READER libs/filereader.h)
-set(DNA_GENERATOR libs/dnagenerator.h)
+set(DNA_GENERATOR libs/dnagenerator.h Lab1/test/test.h)
 add_library(GLOBAL_LIBS ${FILE_READER} ${DNA_GENERATOR})
 
 #LAB 1 LIBS
-set(GLUE Lab1/logic/glue.h)
+set(GLUE Lab1/logic/glue.h Lab1/test/test.h)
 set(BORDER_SEARCH Lab1/logic/bordersearch.h)
 set(BLOCK_SEARCH Lab1/logic/blocksearch.h)
 add_library(Lab1_LIBS ${GLUE} ${BORDER_SEARCH} ${BLOCK_SEARCH})
+#LAB 1 TEST
+set(TESTBLOCK Lab1/test/test.h)
+add_library(Lab1_TESTBLOCK ${TESTBLOCK})
 #LAB 1 EXECUTABLE
 add_executable(Lab1_DNA Lab1/dnasearch.cpp)
 add_executable(Lab1_FILE Lab1/filesearch.cpp)
+add_executable(Lab1_TEST Lab1/testsearch.cpp)
 
 #LAB 2 LIBS
 set(MBA_BUILDER Lab2/logic/mbabuilder.h)
