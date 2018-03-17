@@ -13,7 +13,7 @@
 
 using namespace std;
 
-void test(const string &sample, const string &pattern) {
+void test(const string &sample, const string &pattern, bool positions) {
     vector<int> result;
     int start_time, end_time;
 
@@ -26,7 +26,7 @@ void test(const string &sample, const string &pattern) {
 
     cout << "Operating time: \t" << end_time - start_time << '\n';
     cout << "Num of occurrence: \t" << result.size() << '\n';
-    if (!result.empty()) {
+    if (positions && !result.empty()) {
         cout << "Positions: \t";
         for (auto item: result) cout << item << ' ';
         cout << '\n';
@@ -43,7 +43,7 @@ void test(const string &sample, const string &pattern) {
 
     cout << "Operating time: \t" << end_time - start_time << '\n';
     cout << "Num of occurrence: \t" << result.size() << '\n';
-    if (!result.empty()) {
+    if (positions && !result.empty()) {
         cout << "Positions: \t";
         for (auto item: result) cout << item << ' ';
         cout << '\n';
@@ -51,5 +51,7 @@ void test(const string &sample, const string &pattern) {
 
     cout << "----------------------------------------------\n";
 }
+
+void test(const string &sample, const string &pattern) { test(sample, pattern, true); }
 
 #endif //SSA_TEST_H
