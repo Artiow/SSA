@@ -12,11 +12,11 @@
 
 using namespace std;
 
-vector<int> kmpSearch(const string &sample, const string &pattern) {
+vector<int> kmpSearch(const string &sample, const string &pattern, bool modified) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
 
-    vector<int> mba = buildMaxBorderArray(pattern);
+    vector<int> mba = buildMaxBorderArray(pattern, modified);
     vector<int> occurrence;
 
     int q = 0;
@@ -31,5 +31,7 @@ vector<int> kmpSearch(const string &sample, const string &pattern) {
 
     return occurrence;
 }
+
+vector<int> kmpSearch(const string &sample, const string &pattern) { return kmpSearch(sample, pattern, false); }
 
 #endif //SSA_KMPSEARCH_H

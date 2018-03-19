@@ -10,7 +10,7 @@
 
 using namespace std;
 
-vector<int> buildMaxBorderArray(const string &s) {
+vector<int> buildMaxBorderArray(const string &s, bool modified) {
     unsigned int n = s.length();
     vector<int> array(n);
 
@@ -23,8 +23,14 @@ vector<int> buildMaxBorderArray(const string &s) {
         if (iResultChar == s[tmp]) array[i] = ++tmp;
     }
 
-    for (int i = 1; i < (n - 1); i++) if (array[i] && (s[array[i]] == s[i + 1])) array[i] = array[array[i] - 1];
+    if (modified)
+        for (int i = 1; i < (n - 1); i++)
+            if ((array[i] != 0) && (s[array[i]] == s[i + 1]))
+                array[i] = array[array[i] - 1];
+
     return array;
 }
+
+vector<int> buildMaxBorderArray(const string &s) { return buildMaxBorderArray(s, false); }
 
 #endif //SSA_MBABUILDER_H
