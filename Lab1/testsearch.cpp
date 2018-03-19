@@ -23,10 +23,19 @@ int main() {
     test(sample, pattern);
     cout << "==============================================\n";
 
+    cout << "\nTEST 2\n";
+    cout << "==============================================\n";
+    sample = "ababaabababba";
+    pattern = "aba";
+    cout << "SAMPLE (" << sample.length() << ")\t| " << sample << '\n';
+    cout << "PATTERN (" << pattern.length() << ")\t| " << pattern << '\n';
+    test(sample, pattern);
+    cout << "==============================================\n";
+
     int length = 100000;
     int bpos = 50000;
 
-    cout << "\nTEST 2\n";
+    cout << "\nTEST 3\n";
     cout << "==============================================\n";
     sample = generate(length);
     pattern = "aaa";
@@ -36,7 +45,7 @@ int main() {
     test(sample, pattern, false);
     cout << "==============================================\n";
 
-    cout << "\nTEST 3\n";
+    cout << "\nTEST 4\n";
     cout << "==============================================\n";
     sample = generate(length, bpos);
     pattern = "aaa";

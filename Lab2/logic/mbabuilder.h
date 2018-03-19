@@ -23,7 +23,7 @@ vector<int> buildMaxBorderArray(const string &s) {
         if (iResultChar == s[tmp]) array[i] = ++tmp;
     }
 
-    for (int i = 1; i < n; i++) if (s[array[i] + 1] == s[i + 1]) array[i] = array[array[i]];
+    for (int i = 1; i < (n - 1); i++) if (array[i] && (s[array[i]] == s[i + 1])) array[i] = array[array[i] - 1];
     return array;
 }
 
