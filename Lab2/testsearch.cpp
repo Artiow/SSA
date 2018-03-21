@@ -40,8 +40,8 @@ int main() {
     sample = generate(length);
     pattern = "aaa";
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
+    cout << "B-POSITION: \t\tVOID\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
-    cout << "NO B-POSITION\n";
     test(sample, pattern, false);
     cout << "==============================================\n";
 
@@ -50,8 +50,8 @@ int main() {
     sample = generate(length, bpos);
     pattern = "aaa";
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
+    cout << "B-POSITION: \t\t" << bpos << "\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
-    cout << "B-POSITION: \t" << bpos << "\n";
     test(sample, pattern, false);
     cout << "==============================================\n";
 
