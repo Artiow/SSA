@@ -20,9 +20,12 @@ vector<int> kmpSearch(const string &sample, const string &pattern, bool modified
     vector<int> occurrence;
 
     int q = 0;
+    char sampleChar;
     for (int i = 0; i < n; i++) {
-        while ((q > 0) && (pattern[q] != sample[i])) q = mba[q - 1];
-        if (pattern[q] == sample[i]) q++;
+        sampleChar = sample[i];
+
+        while ((q > 0) && (pattern[q] != sampleChar)) q = mba[q - 1];
+        if (pattern[q] == sampleChar) q++;
         if (q == m) {
             q = mba[m - 1];
             occurrence.push_back(i - m + 1);
