@@ -38,15 +38,21 @@ vector<int> kmpOnlineSearch(const string &sample, const string &pattern) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
 
-    vector<int>* matrix = buildMaxBorderMatrix(pattern);
+    int** matrix = buildMaxBorderMatrix(pattern);
     vector<int> occurrence;
+
+    char sampleChar;
+    unsigned int sampleCharCode;
 
     int q = 0;
     for (int i = 0; i < n; i++) {
-        if ((q > 0) && (pattern[q] != sample[i])) q = q - (matrix[sample[i]])[q - 1];
-        if (pattern[q] == sample[i]) q++;
+        sampleChar = sample[i];
+        sampleCharCode = getArrayCode(sampleChar);
+
+        if ((q > 0) && (pattern[q] != sampleChar)) q = q - (matrix[sampleCharCode])[q - 1];
+        if (pattern[q] == sampleChar) q++;
         if (q == m) {
-            q = (matrix[sample[i]])[m - 1];
+            q = (matrix[sampleCharCode])[m - 1];
             occurrence.push_back(i - m + 1);
         }
     }

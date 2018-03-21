@@ -37,14 +37,24 @@ vector<int> buildMaxBorderArray(const string &s) { return buildMaxBorderArray(s,
 unsigned int ASCII_FIRST = 32;
 unsigned int ASCII_LAST = 126;
 
-vector<int>* buildMaxBorderMatrix(const string &s) {
-    unsigned int CAPACITY = ASCII_LAST - ASCII_FIRST + 1;
+unsigned int getArrayCode(char c) {
+    return (((unsigned int) c) - ASCII_FIRST);
+}
 
+unsigned int getCardinality() {
+    return (ASCII_LAST - ASCII_FIRST + 1);
+}
+
+int** buildMaxBorderMatrix(const string &s) {
     unsigned int n = s.length();
-    vector<int> *matrix = new vector<int>(CAPACITY);
-    for (int i = 0; i < CAPACITY; i++) matrix[i] = *(new vector<int>(n));
 
-    vector<int> array(n);
+    unsigned int cardinality = getCardinality();
+    auto **matrix = new int *[cardinality];
+    for (int i = 0; i < cardinality; i++) { matrix[i] = new int[n]; for (int j = 0; j < n; j++) matrix[i][j] = 0; }
+
+    auto *array = new int(n);
+    for (int i = 0; i < n; i++) array[i] = 0;
+
     for (int i = 0; i < (n - 1);) {
         int tmp = array[i];
 
@@ -56,20 +66,19 @@ vector<int>* buildMaxBorderMatrix(const string &s) {
 
     int borderValue;
     char borderChar;
-    unsigned int borderCode;
     for (int i = 1; i < (n - 1); i++) {
         borderValue = array[i];
         borderChar = s[borderValue];
 
-        borderCode = (((unsigned int) borderChar) - ASCII_FIRST);
         if ((borderValue != 0) && (borderChar == s[i + 1])) {
             int newValue = array[borderValue - 1];
 
             array[i] = newValue;
-            (matrix[borderCode])[i] = newValue;
+            (matrix[getArrayCode(borderChar)])[i] = newValue;
         }
     }
 
+    delete array;
     return matrix;
 }
 
