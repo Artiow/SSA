@@ -23,8 +23,6 @@ add_library(Lab1_LIBS ${GLUE} ${BORDER_SEARCH} ${BLOCK_SEARCH})
 set(Lab1_TESTFILE Lab1/test/test.h)
 add_library(Lab1_TESTBLOCK ${Lab1_TESTFILE})
 #LAB 1 EXECUTABLE
-set(Lab1_TESTBLOCK Lab1/test/test.h)
-add_executable(Lab1_DNA Lab1/dnasearch.cpp)
 add_executable(Lab1_FILE Lab1/filesearch.cpp)
 add_executable(Lab1_TEST Lab1/testsearch.cpp)
 
@@ -36,6 +34,5 @@ add_library(Lab2_LIBS ${MBA_BUILDER} ${KMP_SEARCH} Lab2/test/test.h)
 set(Lab2_TESTFILE Lab2/test/test.h)
 add_library(Lab2_TESTBLOCK ${Lab2_TESTFILE})
 #LAB 2 EXECUTABLE
-add_executable(Lab2_DNA Lab2/dnasearch.cpp)
 add_executable(Lab2_FILE Lab2/filesearch.cpp)
 add_executable(Lab2_TEST Lab2/testsearch.cpp)
