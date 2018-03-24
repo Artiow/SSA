@@ -21,7 +21,7 @@ set(BLOCK_SEARCH Lab1/logic/blocksearch.h)
 add_library(Lab1_LIBS ${GLUE} ${BORDER_SEARCH} ${BLOCK_SEARCH})
 #LAB 1 TEST
 set(Lab1_TESTFILE Lab1/test/test.h)
-add_library(Lab1_TESTBLOCK ${Lab1_TESTBLOCK})
+add_library(Lab1_TESTBLOCK ${Lab1_TESTFILE})
 #LAB 1 EXECUTABLE
 set(Lab1_TESTBLOCK Lab1/test/test.h)
 add_executable(Lab1_DNA Lab1/dnasearch.cpp)
@@ -34,7 +34,7 @@ set(KMP_SEARCH Lab2/logic/kmpsearch.h)
 add_library(Lab2_LIBS ${MBA_BUILDER} ${KMP_SEARCH} Lab2/test/test.h)
 #LAB 2 TEST
 set(Lab2_TESTFILE Lab2/test/test.h)
-add_library(Lab2_TESTBLOCK ${Lab2_TESTBLOCK})
+add_library(Lab2_TESTBLOCK ${Lab2_TESTFILE})
 #LAB 2 EXECUTABLE
 add_executable(Lab2_DNA Lab2/dnasearch.cpp)
 add_executable(Lab2_FILE Lab2/filesearch.cpp)
