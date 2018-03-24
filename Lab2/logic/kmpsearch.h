@@ -52,7 +52,7 @@ vector<int> kmpOnlineSearch(const string &sample, const string &pattern) {
         sampleChar = sample[i];
         sampleCharCode = getArrayCode(sampleChar);
 
-        if ((q > 0) && (pattern[q] != sampleChar)) q = q - (matrix[sampleCharCode])[q - 1];
+        if ((q > 0) && (pattern[q] != sampleChar)) q = (matrix[sampleCharCode])[q - 1];
         if (pattern[q] == sampleChar) q++;
         if (q == m) {
             q = (matrix[sampleCharCode])[m - 1];
