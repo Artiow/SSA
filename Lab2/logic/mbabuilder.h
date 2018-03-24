@@ -66,7 +66,7 @@ int** buildMaxBorderMatrix(const string &s) {
         i++;
         char iResultChar = s[i];
         while ((tmp > 0) && (iResultChar != s[tmp])) tmp = array[tmp - 1];
-        if (iResultChar == s[tmp]) array[i] = ++tmp;
+        if (iResultChar == s[tmp]) array[i] = ++tmp; else array[i] = 0;
     }
 
     int borderValue;
