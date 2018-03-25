@@ -41,7 +41,7 @@ vector<int> kmpOnlineSearch(const string &sample, const string &pattern) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
 
-    int** matrix = buildMaxBorderMatrix(pattern);
+    int **matrix = buildMaxBorderMatrix(pattern);
     vector<int> occurrence;
 
     char sampleChar;
@@ -60,7 +60,9 @@ vector<int> kmpOnlineSearch(const string &sample, const string &pattern) {
         }
     }
 
+    for (int i = 0; i < getCardinality(); i++) delete (*(matrix + i));
     delete matrix;
+
     return occurrence;
 }
 

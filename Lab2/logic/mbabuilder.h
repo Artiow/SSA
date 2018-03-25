@@ -71,18 +71,34 @@ int** buildMaxBorderMatrix(const string &s) {
 
     int borderValue;
     char borderChar;
+
     for (int i = 1; i < (n - 1); i++) {
+        borderValue = array[i];
+        if ((borderValue != 0) && (s[borderValue] == s[i + 1])) array[i] = array[borderValue - 1];
+    }
+
+    for(int i = 0; i < n; i++){
         borderValue = array[i];
         borderChar = s[borderValue];
 
-        int newValue;
-        if ((borderValue != 0) && (s[borderValue] == s[i + 1])) {
-            newValue = array[borderValue - 1];
-
-            array[i] = newValue;
-            (matrix[getArrayCode(borderChar)])[i] = newValue;
-        } else (matrix[getArrayCode(borderChar)])[i] = array[i];
+        (matrix[getArrayCode(borderChar)])[i] = borderValue;
     }
+
+//    =================================================================================================================
+//    FAST VERSION CUT OUT:
+//
+//    for (int i = 1; i < (n - 1); i++) {
+//        borderValue = array[i];
+//        borderChar = s[borderValue];
+//
+//        int newValue;
+//        if ((borderValue != 0) && (s[borderValue] == s[i + 1])) {
+//            newValue = array[borderValue - 1];
+//
+//            array[i] = newValue;
+//            (matrix[getArrayCode(borderChar)])[i] = newValue;
+//        } else (matrix[getArrayCode(borderChar)])[i] = array[i];
+//    }
 
     delete array;
     return matrix;

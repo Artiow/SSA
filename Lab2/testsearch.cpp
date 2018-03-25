@@ -77,13 +77,13 @@ int main() {
     start_time = clock();
     sample = generateDNA(sampleLength, rd());
     end_time = clock();
-    cout << "SAMPLE LENGTH:  \t\t\t" << sample.length() << '\n';
+    cout << "SAMPLE LENGTH: \t\t\t" << sample.length() << '\n';
     cout << "SAMPLE GENERATING TIME: \t" << end_time - start_time << "\n";
 
     start_time = clock();
     pattern = generateDNA(patternLength, rd());
     end_time = clock();
-    cout << "PATTERN LENGTH: \t\t\t" << pattern.length() << '\n';
+    cout << "PATTERN LENGTH: \t\t" << pattern.length() << '\n';
     cout << "PATTERN GENERATING TIME: \t" << end_time - start_time << "\n";
 
     test(sample, pattern, false);

@@ -10,9 +10,9 @@ add_library(SAMPLES ${SAMPLE_1} ${SAMPLE_2})
 
 #GLOBAL LIBS
 set(FILE_READER libs/filereader.h)
-set(DNA_GENERATOR libs/dnagenerator.h)
 set(TEST_GENERATOR libs/testgenerator.h)
-add_library(GLOBAL_LIBS ${FILE_READER} ${DNA_GENERATOR} ${TEST_GENERATOR})
+set(DNA_GENERATOR libs/dnagenerator.h)
+add_library(GLOBAL_LIBS ${FILE_READER} ${TEST_GENERATOR} ${DNA_GENERATOR})
 
 #LAB 1 LIBS
 set(GLUE Lab1/logic/glue.h Lab1/test/test.h)
