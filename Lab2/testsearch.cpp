@@ -46,11 +46,12 @@ int main() {
     cout << "==============================================\n";
 
     sample = generate(sLength);
-    pattern = "aaa";
+    pattern = "aaaaa";
 
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "B-POSITION: \t\tVOID\n";
+    cout << "SAMPLE B-POSITION: \tVOID\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
+    cout << "PATTERN B-POSITION: \tVOID\n";
     test(sample, pattern, false);
     cout << "==============================================\n";
 
@@ -58,15 +59,17 @@ int main() {
     cout << "==============================================\n";
 
     sample = generate(sLength, sBpos);
-    pattern = "aaa";
+    pattern = "aaaaa";
 
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "B-POSITION: \t\t" << sBpos << "\n";
+    cout << "SAMPLE B-POSITION: \t" << sBpos << "\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
+    cout << "PATTERN B-POSITION: \tVOID\n";
     test(sample, pattern, false);
     cout << "==============================================\n";
 
     int pLength = 100000;
+    int pBpos = 99999;
     sLength = 10000000;
     sBpos = 5000000;
 
@@ -77,8 +80,9 @@ int main() {
     pattern = generate(pLength);
 
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "B-POSITION: \t\tVOID\n";
+    cout << "SAMPLE B-POSITION: \tVOID\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
+    cout << "PATTERN B-POSITION: \tVOID\n";
     test(sample, pattern, false);
     cout << "==============================================\n";
 
@@ -86,11 +90,12 @@ int main() {
     cout << "==============================================\n";
 
     sample = generate(sLength, sBpos);
-    pattern = generate(pLength);
+    pattern = generate(pLength, pBpos);
 
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "B-POSITION: \t\t" << sBpos << "\n";
+    cout << "SAMPLE B-POSITION: \t" << sBpos << "\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
+    cout << "PATTERN B-POSITION: \t" << pBpos << "\n";
     test(sample, pattern, false);
     cout << "==============================================\n";
 
