@@ -39,13 +39,13 @@ int main() {
     test(sample, pattern);
     cout << "==============================================\n";
 
-    int length = 100000;
-    int bpos = 50000;
+    int sLength = 100000;
+    int sBpos = 50000;
 
     cout << "\nTEST 3\n";
     cout << "==============================================\n";
 
-    sample = generate(length);
+    sample = generate(sLength);
     pattern = "aaa";
 
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
@@ -57,11 +57,39 @@ int main() {
     cout << "\nTEST 4\n";
     cout << "==============================================\n";
 
-    sample = generate(length, bpos);
+    sample = generate(sLength, sBpos);
     pattern = "aaa";
 
     cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "B-POSITION: \t\t" << bpos << "\n";
+    cout << "B-POSITION: \t\t" << sBpos << "\n";
+    cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
+    test(sample, pattern, false);
+    cout << "==============================================\n";
+
+    int pLength = 100000;
+    sLength = 10000000;
+    sBpos = 5000000;
+
+    cout << "\nTEST 5\n";
+    cout << "==============================================\n";
+
+    sample = generate(sLength);
+    pattern = generate(pLength);
+
+    cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
+    cout << "B-POSITION: \t\tVOID\n";
+    cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
+    test(sample, pattern, false);
+    cout << "==============================================\n";
+
+    cout << "\nTEST 6\n";
+    cout << "==============================================\n";
+
+    sample = generate(sLength, sBpos);
+    pattern = generate(pLength);
+
+    cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
+    cout << "B-POSITION: \t\t" << sBpos << "\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
     test(sample, pattern, false);
     cout << "==============================================\n";
@@ -71,7 +99,7 @@ int main() {
     unsigned long sampleLength = 100000000;
     unsigned long patternLength = 10;
 
-    cout << "\nTEST 5 (DNA)\n";
+    cout << "\nTEST 7 (DNA)\n";
     cout << "==============================================\n";
 
     start_time = clock();

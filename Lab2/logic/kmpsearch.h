@@ -44,19 +44,20 @@ vector<int> kmpOnlineSearch(const string &sample, const string &pattern) {
     int **matrix = buildMaxBorderMatrix(pattern);
     vector<int> occurrence;
 
-    char sampleChar;
-    unsigned int sampleCharCode;
-
     int q = 0;
-    for (int i = 0; i < n; i++) {
+    char sampleChar;
+    int* alphabetLine;
+    for (int i = 0; i < n;) {
         sampleChar = sample[i];
-        sampleCharCode = getArrayCode(sampleChar);
+        alphabetLine = matrix[getArrayCode(sampleChar)];
 
-        if ((q > 0) && (pattern[q] != sampleChar)) q = (matrix[sampleCharCode])[q - 1];
+        if ((q > 0) && (pattern[q] != sampleChar)) q = alphabetLine[q - 1];
         if (pattern[q] == sampleChar) q++;
+
+        i++;
         if (q == m) {
-            q = (matrix[sampleCharCode])[m - 1];
-            occurrence.push_back(i - m + 1);
+            if (i < n) q = (matrix[getArrayCode(sample[i])])[m - 1];
+            occurrence.push_back(i - m);
         }
     }
 
