@@ -53,11 +53,12 @@ void test(const string &sample, const string &pattern, bool positions) {
     cout << "\nKMP-ONLINE SEARCH\n";
     cout << "----------------------------------------------\n";
 
+    int alloc_time = 0;
     start_time = clock();
-    result = kmpOnlineSearch(sample, pattern);
+    result = kmpOnlineSearch(sample, pattern, alloc_time);
     end_time = clock();
 
-    cout << "Operating time: \t" << end_time - start_time << '\n';
+    cout << "Operating time: \t" << end_time - start_time - alloc_time << '\n';
     cout << "Num of occurrence: \t" << result.size() << '\n';
     if (positions && !result.empty()) {
         cout << "Positions: \t";

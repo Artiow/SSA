@@ -37,11 +37,11 @@ vector<int> kmpSearch(const string &sample, const string &pattern, bool modified
 
 vector<int> kmpSearch(const string &sample, const string &pattern) { return kmpSearch(sample, pattern, false); }
 
-vector<int> kmpOnlineSearch(const string &sample, const string &pattern) {
+vector<int> kmpOnlineSearch(const string &sample, const string &pattern, int &allocTime) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
 
-    int **matrix = buildMaxBorderMatrix(pattern);
+    int **matrix = buildMaxBorderMatrix(pattern, allocTime);
     vector<int> occurrence;
 
     int q = 0;

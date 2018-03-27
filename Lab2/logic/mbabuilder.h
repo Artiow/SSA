@@ -47,24 +47,21 @@ unsigned int getCardinality() {
     return (ASCII_LAST - ASCII_FIRST + 1);
 }
 
-int** buildMaxBorderMatrix(const string &s) {
+int** buildMaxBorderMatrix(const string &s, int &allocTime) {
     unsigned int n = s.length();
     unsigned int cardinality = getCardinality();
 
     vector<int> array = buildMaxBorderArray(s, true);
+
+    allocTime = clock();
     auto **matrix = new int *[cardinality];
-    for (int i = 0; i < cardinality; i++) {
-        matrix[i] = new int[n];
-        for (int j = 0; j < n; j++) matrix[i][j] = 0;
-    }
+    for (int i = 0; i < cardinality; i++) { matrix[i] = new int[n]; for (int j = 0; j < n; j++) matrix[i][j] = 0; }
+    allocTime = clock() - allocTime;
 
     int borderValue;
-    char borderChar;
     for(int i = 0; i < n; i++){
         borderValue = array[i];
-        borderChar = s[borderValue];
-
-        (matrix[getArrayCode(borderChar)])[i] = borderValue;
+        (matrix[getArrayCode(s[borderValue])])[i] = borderValue;
     }
 
     return matrix;
