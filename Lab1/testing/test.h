@@ -6,6 +6,7 @@
 #define SSA_TEST_H
 
 #include <iostream>
+#include <vector>
 #include <ctime>
 
 #include "../logic/bordersearch.h"
