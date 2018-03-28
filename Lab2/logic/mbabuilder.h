@@ -34,8 +34,6 @@ vector<int> buildMaxBorderArray(const string &s, bool modified) {
     return array;
 }
 
-vector<int> buildMaxBorderArray(const string &s) { return buildMaxBorderArray(s, false); }
-
 unsigned int ASCII_FIRST = 32;
 unsigned int ASCII_LAST = 126;
 

@@ -12,13 +12,29 @@
 
 using namespace std;
 
-vector<int> bmSearch(const string &sample, const string &pattern) {
+vector<int> bmSearch(const string &sample, const string &pattern, int &allocTime) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
+    vector<int> **p_list = buildPositionList(pattern, allocTime);
+    vector<int> occurrences;
 
-    vector<int> occurrence;
+    int i, j, cursor = m;
+    while (cursor <= n) {
+        i = cursor - 1; j = m - 1;
+        while (j >= 0) {
+            if (sample[i] != pattern[j]) break;
+            i--; j--;
+        }
 
-    return occurrence;
+        if (j < 0) {
+            occurrences.push_back(i + 1);
+            cursor++;
+        } else {
+            cursor += shift(p_list, sample[i], j);
+        }
+    }
+
+    return occurrences;
 }
 
 #endif //SSA_BMSEARCH_H
