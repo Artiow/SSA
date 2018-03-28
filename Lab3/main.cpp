@@ -78,7 +78,7 @@ int main() {
     cout << "SAMPLE EX-POSITION: \tVOID\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
     cout << "PATTERN EX-POSITION: \tVOID\n";
-    test(sample, pattern, true, true);
+    test(sample, pattern, true, false, false);
     cout << "==============================================\n";
 
     cout << "\nTEST 6\n";
@@ -91,7 +91,7 @@ int main() {
     cout << "SAMPLE EX-POSITION: \t" << sExPos << "\n";
     cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
     cout << "PATTERN EX-POSITION: \t" << pExPos << "\n";
-    test(sample, pattern, true, true);
+    test(sample, pattern, true, false, false);
     cout << "==============================================\n";
 
     random_device rd;
