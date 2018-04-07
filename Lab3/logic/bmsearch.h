@@ -24,8 +24,7 @@ vector<int> bmSearchBad(const string &sample, const string &pattern, int &allocT
     int i, j, cursor = m;
     while (cursor <= n) {
         i = cursor - 1; j = m - 1;
-        while (j >= 0) {
-            if (sample[i] != pattern[j]) break;
+        while ((j >= 0) && (sample[i] == pattern[j])) {
             i--; j--;
         }
 
@@ -48,18 +47,18 @@ vector<int> bmSearchGood(const string &sample, const string &pattern, int &alloc
     vector<int> bmShiftGood = bmPreprocessGoodNew(pattern);
     preprocessTime = clock() - preprocessTime;
 
-    int i = 0;
-    while (i <= (n - m)) {
-        int j = m - 1;
-        while ((j >= 0) && (sample[i + j] == pattern[j])) {
-            j--;
+    int i, j, cursor = m;
+    while (cursor <= n) {
+        i = cursor - 1; j = m - 1;
+        while ((j >= 0) && (sample[i] == pattern[j])) {
+            i--; j--;
         }
 
         if (j < 0) {
-            occurrences.push_back(i);
-            i += bmShiftGood[0];
+            occurrences.push_back(i + 1);
+            cursor += bmShiftGood[0];
         } else {
-            i += __max(1, bmShiftGood[j + 1]);
+            cursor += __max(1, bmShiftGood[j + 1]);
         }
     }
 
