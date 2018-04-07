@@ -12,11 +12,14 @@
 
 using namespace std;
 
-vector<int> bmSearchBad(const string &sample, const string &pattern, int &allocTime) {
+vector<int> bmSearchBad(const string &sample, const string &pattern, int &allocTime, int &preprocessTime) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
-    vector<int> **p_list = buildPositionList(pattern, allocTime);
     vector<int> occurrences;
+
+    preprocessTime = clock();
+    vector<int> **p_list = bmPreprocessBad(pattern, allocTime);
+    preprocessTime = clock() - preprocessTime;
 
     int i, j, cursor = m;
     while (cursor <= n) {
@@ -26,39 +29,41 @@ vector<int> bmSearchBad(const string &sample, const string &pattern, int &allocT
             i--; j--;
         }
 
-        if (j < 0) occurrences.push_back(i + 1);
-        cursor += shift(p_list, sample[i], j);
+        if (j < 0) {
+            occurrences.push_back(i + 1);
+            cursor++; //TODO: jump
+        } else cursor += bmShiftBad(p_list, sample[i], j);
     }
 
     return occurrences;
 }
 
-vector<int> bmSearchGood(const string &sample, const string &pattern, bool strong, int &allocTime) {
+vector<int> bmSearchGood(const string &sample, const string &pattern, int &allocTime, int &preprocessTime) {
     unsigned int n = sample.length();
     unsigned int m = pattern.length();
-    vector<int> **p_list = buildPositionList(pattern, allocTime);
     vector<int> occurrences;
 
-    vector<int> normal_p = preprocessNormal(pattern, strong);
-    vector<int> special_p = preprocessSpecial(pattern);
+    preprocessTime = clock();
+    vector<int> **p_list = bmPreprocessBad(pattern, allocTime);
+    vector<int> bmShiftGood = bmPreprocessGoodNew(pattern);
+    preprocessTime = clock() - preprocessTime;
 
-    int i, j, cursor = m;
-    while(cursor <= n) {
-        i = cursor - 1; j = m - 1;
-        while (j >= 0) {
-            if (sample[i] != pattern[j]) break;
-            i--; j--;
+    int i = 0;
+    while (i <= (n - m)) {
+        int j = m - 1;
+        while ((j >= 0) && (sample[i + j] == pattern[j])) {
+            j--;
         }
 
-        if (j < 0) occurrences.push_back(i + 1);
-        cursor += __max(shift(p_list, sample[i], j), shift(normal_p, special_p, j));
+        if (j < 0) {
+            occurrences.push_back(i);
+            i += bmShiftGood[0];
+        } else {
+            i += __max(1, bmShiftGood[j + 1]);
+        }
     }
 
     return occurrences;
 }
-
-vector<int> bmSearchGoodWeak(const string &sample, const string &pattern, int &allocTime) { return bmSearchGood(sample, pattern, false, allocTime); }
-
-vector<int> bmSearchGoodStrong(const string &sample, const string &pattern, int &allocTime) { return bmSearchGood(sample, pattern, true, allocTime); }
 
 #endif //SSA_BMSEARCH_H
