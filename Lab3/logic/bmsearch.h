@@ -44,7 +44,7 @@ vector<int> bmSearchGood(const string &sample, const string &pattern, int &alloc
 
     preprocessTime = clock();
     vector<int> **p_list = bmPreprocessBad(pattern, allocTime);
-    vector<int> bmShiftGood = bmPreprocessGoodNew(pattern);
+    vector<int> bmShiftGood = bmPreprocessGood(pattern);
     preprocessTime = clock() - preprocessTime;
 
     int i, j, cursor = m;

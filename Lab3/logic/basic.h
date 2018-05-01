@@ -108,25 +108,6 @@ vector<int> zBlockArraySuffixes(const string &s) {
 
 vector<int> bmPreprocessGood(const string &s) {
     unsigned int n = s.length();
-    auto result = vector<int>(n);
-
-    vector<int> zp = zBlockArrayPrefixes(s);
-    vector<int> zs = zBlockArraySuffixes(s);
-
-    int lastPrefixIndex = n;
-    for (int i = n - 1; i >= 0; i--) {
-        result[i] = lastPrefixIndex;
-        if (zp[i] == (n - i)) lastPrefixIndex = i;
-    }
-
-    result[n - 1] = 1;
-    for (int i = 0; i < (n - 1); i++) if (zs[i] > 0) result[n - 1 - zs[i]] = n - 1 - i;
-
-    return result;
-}
-
-vector<int> bmPreprocessGoodNew(const string &s) {
-    unsigned int n = s.length();
     auto tmp = vector<int>(n + 1);
     auto result = vector<int>(n + 1);
 
