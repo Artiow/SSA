@@ -2,8 +2,8 @@
 // Created by Artiow on 28.03.2018.
 //
 
-#ifndef SSA_BASIC_H
-#define SSA_BASIC_H
+#ifndef SSA_BMBASIC_H
+#define SSA_BMBASIC_H
 
 #include <iostream>
 #include <vector>
@@ -132,4 +132,4 @@ vector<int> bmPreprocessGood(const string &s) {
     return result;
 }
 
-#endif //SSA_BASIC_H
+#endif //SSA_BMBASIC_H
