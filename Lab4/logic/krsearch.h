@@ -15,8 +15,8 @@ int getHash(const string &s, int length) {
     return hash;
 }
 
-int rehash(int hash, int factor, char a, char b){
-    return ((hash - ((int) a) * factor) * POWER + ((int) b)) % MERSENNE;
+int reHash(int hash, int factor, char dec, char inc){
+    return ((hash - ((int) dec) * factor) * POWER + ((int) inc)) % MERSENNE;
 }
 
 bool compare(const string &sample, const string &pattern, int cursor){
@@ -42,14 +42,12 @@ vector<int> krSearch(const string &sample, const string &pattern) {
     int sampleHash = getHash(sample, m);
     int patternHash = getHash(pattern, m);
 
-    for (int j = 0; j < (n - m); j++) {
+    for (int j = 0; j <= (n - m); j++) {
         if ((patternHash == sampleHash) && compare(sample, pattern, j)) occurrences.push_back(j);
 
-        sampleHash = rehash(sampleHash, factor, sample[j], sample[j + m]);
+        sampleHash = reHash(sampleHash, factor, sample[j], sample[j + m]);
         if (sampleHash < 0) sampleHash += MERSENNE;
     }
-
-    if ((patternHash == sampleHash) && compare(sample, pattern, (n - m))) occurrences.push_back(n - m);
 
     return occurrences;
 }
