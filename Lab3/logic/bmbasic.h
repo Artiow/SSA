@@ -48,64 +48,6 @@ int bmShiftBad(vector<int> **p_list, char bad_char, int bad_pos) {
     return bad_pos - r_shift;
 }
 
-int cmp(const string &s, int p1, int p2, bool reversed) {
-    unsigned int n = s.length();
-
-    int result = 0;
-    if ((p1 < n) && (p2 < n) && (p1 >= 0) && (p2 >= 0) && (p1 < p2)) {
-        if (!reversed) while ((p1 < n) && (p2 < n) && (s[p1++] == s[p2++])) result++;
-        if (reversed) while ((p1 >= 0) && (p2 >= n) && (s[p1--] == s[p2--])) result++;
-    }
-
-    return result;
-}
-
-vector<int> zBlockArrayPrefixes(const string &s) {
-    unsigned int n = s.length();
-
-    int l = 0, r = 0;
-    vector<int> z(n);
-    for (int i = 1; i < n; i++) {
-        if (i >= r) {
-            z[i] = cmp(s, 0, i, false);
-            l = i; r = l + z[i];
-        } else {
-            int k = i - l;
-            if (z[k] < r - i) {
-                z[i] = z[k];
-            } else {
-                z[i] = r - i + cmp(s, r - i, r, false);
-                l = i; r = l + z[i];
-            }
-        }
-    }
-    return z;
-
-}
-
-vector<int> zBlockArraySuffixes(const string &s) {
-    unsigned int n = s.length();
-
-    int l = n - 1, r = n - 1;
-    vector<int> z(n);
-    for (int i = n - 2; i >= 0; i--) {
-        if (i <= l) {
-            z[i] = cmp(s, i, n - 1, true);
-            r = i; l = r - z[i];
-        } else {
-            int k = n - (r - i) - 1;
-            if (z[k] < i - l) {
-                z[i] = z[k];
-            } else {
-                z[i] = i - l + cmp(s, l, n - i + l - 1, true);
-                r = i; l = r - z[i];
-            }
-        }
-    }
-    return z;
-
-}
-
 vector<int> bmPreprocessGood(const string &s) {
     unsigned int n = s.length();
     auto tmp = vector<int>(n + 1);
