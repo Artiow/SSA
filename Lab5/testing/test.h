@@ -13,7 +13,7 @@ void test(const string &sample, const string &pattern, bool positions) {
     vector<int> result;
     int start_time, end_time;
 
-    cout << "\nKR SEARCH\n";
+    cout << "\nSHIFT-AND SEARCH\n";
     cout << "----------------------------------------------\n";
 
     start_time = clock();

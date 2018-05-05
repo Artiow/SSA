@@ -6,19 +6,7 @@
 
 using namespace std;
 
-unsigned int ASCII_FIRST = 32;
-unsigned int ASCII_LAST = 126;
-
-unsigned int getArrayCode(char c) {
-    return (((unsigned int) c) - ASCII_FIRST);
-}
-
-unsigned int getCardinality() {
-    return (ASCII_LAST - ASCII_FIRST + 1);
-}
-
-
-const int POWER = 53;
+const int POWER = 10;
 const int MERSENNE = 2147483647;
 
 int getHash(const string &s, int length) {
