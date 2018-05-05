@@ -6,7 +6,7 @@
 
 using namespace std;
 
-const int POWER = 10;
+const int POWER = 4;
 const int MERSENNE = 2147483647;
 
 int getHash(const string &s, int length) {

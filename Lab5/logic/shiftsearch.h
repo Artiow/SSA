@@ -27,11 +27,11 @@ vector<int> shiftSearch(const string &sample, const string &pattern) {
     for (int i = 0; i < cardinality; i++) alphabet[i] = 0;
     for (int i = 0; i < m; i++) alphabet[getArrayCode(pattern[i])] |= 1 << (m - 1 - i);
 
-    int uHigh = 1 << (m - 1);
+    int ADJUNCT = 1 << (m - 1);
     int mask = 0;
 
     for (int i = 0; i < n; i++) {
-        mask = (mask >> 1 | uHigh) & alphabet[getArrayCode(sample[i])];
+        mask = (mask >> 1 | ADJUNCT) & alphabet[getArrayCode(sample[i])];
         if ((mask & 1) != 0) occurrences.push_back(i - m + 1);
     }
 
