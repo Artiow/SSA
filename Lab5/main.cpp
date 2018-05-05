@@ -63,43 +63,12 @@ int main() {
     test(sample, pattern, false);
     cout << "==============================================\n";
 
-    int pLength = 100000;
-    int pExPos = 99999;
-    sLength = 10000000;
-    sExPos = 5000000;
-
-    cout << "\nTEST 5\n";
-    cout << "==============================================\n";
-
-    sample = generate(sLength);
-    pattern = generate(pLength);
-
-    cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "SAMPLE EX-POSITION: \tVOID\n";
-    cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
-    cout << "PATTERN EX-POSITION: \tVOID\n";
-    test(sample, pattern, false);
-    cout << "==============================================\n";
-
-    cout << "\nTEST 6\n";
-    cout << "==============================================\n";
-
-    sample = generate(sLength, sExPos);
-    pattern = generate(pLength, pExPos);
-
-    cout << "SAMPLE LENGTH:  \t" << sample.length() << '\n';
-    cout << "SAMPLE EX-POSITION: \t" << sExPos << "\n";
-    cout << "PATTERN LENGTH: \t" << pattern.length() << '\n';
-    cout << "PATTERN EX-POSITION: \t" << pExPos << "\n";
-    test(sample, pattern, false);
-    cout << "==============================================\n";
-
     random_device rd;
     int start_time, end_time;
     unsigned long sampleLengthDNA = 100000000;
     unsigned long patternLengthDNA = 10;
 
-    cout << "\nTEST 7 (DNA)\n";
+    cout << "\nTEST 5 (DNA)\n";
     cout << "==============================================\n";
 
     start_time = clock();

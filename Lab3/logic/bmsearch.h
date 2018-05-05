@@ -30,7 +30,7 @@ vector<int> bmSearchBad(const string &sample, const string &pattern, int &allocT
 
         if (j < 0) {
             occurrences.push_back(i + 1);
-            cursor++; //TODO: jump
+            cursor++;
         } else cursor += bmShiftBad(p_list, sample[i], j);
     }
 
